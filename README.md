@@ -121,3 +121,57 @@ button:hover {
 
 - `&` 키워드는 상위(부모) 선택자를 참조하여 치환합니다.
 
+## classnames 모듈
+
+- 조건부 스타일링 때 주로 사용한다
+- https://www.npmjs.com/package/classnames
+- false일 경우 입력되지 않는다.
+
+# Hook API
+
+## useCallback
+
+- 렌더링 성능을 최적화해야 하는 상황에서 사용
+- 파라미터(생성하고 싶은 함수, 배열(어떤 값이 바뀌었을 때 함수를 새로 생성해야 하는지 명시))
+- props로 전달해야 할 함수를 만들 때는 useCallback을 사용하여 함수를 감싸는 것을 습관화
+
+```react
+useCallback( () => callback, [target] );
+```
+
+
+
+## useRef
+
+- Ref는 render 메서드에서 생성된 DOM 노드나 React 엘리먼트에 접근하는 방법을 제공
+- https://ko.reactjs.org/docs/refs-and-the-dom.html
+- 포커스 관리할 때
+
+```react
+//등록 버튼 눌렀을 때 포커스가 인풋 쪽으로 넘어감
+const Average = () => {
+  const inputEl = useRef(null);
+  //inputEl을 포커스
+  const onInsert = useCallback( _ => inputEl.current.focus(), [number, list] );
+  //react에게 input 엘리먼트를 inputEl ref와 연결하겠음
+	return (
+  <div>
+      <input value={number} onChange={onChange} ref={inputEl}></input>
+      <button onClick={onInsert}>등록</button>
+  </div>)
+}
+
+```
+
+- 로컬 변수 사용
+
+```javascript
+const id = useRef(1);
+const setId = n => {id.current = n}
+// 이렇게 ref안의 값이 바뀌어도 컴포넌트가 렌더링되지 않음
+// 랜더링과 관련되지 앟은 값을 관리할 때
+```
+
+## onSubmit
+
+onSubmit 이벤트는 onClick과 다르게 인풋에서 enter를 눌렀을 때도 발생하기 때문
