@@ -2,11 +2,11 @@ import React from 'react';
 import { MdAdd } from 'react-icons/md';
 import './TodoInsert.scss';
 
-const TodoInsert = () => {
+const TodoInsert = ({ addTodo }) => {
   return (
     <form className="TodoInsert">
       <input placeholder="할 일을 입력하세요" />
-      <button type="submit">
+      <button type="button" onClick={addTodo}>
         <MdAdd />
       </button>
     </form>
