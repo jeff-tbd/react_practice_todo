@@ -59,7 +59,7 @@ react 연습을 위한 일정 관리 웹 어플리케이션 프로젝트
     flex: 1; //사용가능한 공간은 각 항목에게 동일하게 분배
     
     /* One value, length or percentage: flex-basis */
-    flex: 10em;
+    flex: 10rem;
     flex: 30%;
     
     /* Two values: flex-grow | flex-basis */
@@ -101,6 +101,21 @@ button:hover {
   color: #dee2e6;
 }
 ```
+
+## adjacent sibling selector(+)
+
+- 앞에서 지정한 요소의 **바로 다음**에 위치하는 형제 요소만 선택
+
+- ```css
+  /* Paragraphs that come immediately after any image */
+  img + p {
+    font-style: bold;
+  }
+  ```
+
+## :nth-child( an + b )
+
+- 인자로 even, odd를 받을 수 있다
 
 ## scss의 & 문법
 
