@@ -175,3 +175,25 @@ const setId = n => {id.current = n}
 ## onSubmit
 
 onSubmit 이벤트는 onClick과 다르게 인풋에서 enter를 눌렀을 때도 발생하기 때문
+
+# 컴포넌트 최적화
+
+### React.memo
+
+- https://ui.toast.com/weekly-pick/ko_20190731/
+
+### useState의 함수형 업데이트
+
+- setTodos 인자로 새로운 상태를 넣는 대신, 업데이트를 어떻게 할 지 정의해 주는 함수를 넣는다
+
+### 결과
+
+- before
+- ![image](https://user-images.githubusercontent.com/33744302/72526640-3dc2e500-38aa-11ea-946a-ad651f8d2e3e.png)
+- after
+- ![image](https://user-images.githubusercontent.com/33744302/72527116-60093280-38ab-11ea-9006-c7d3499224e6.png)
+
+
+
+
+
