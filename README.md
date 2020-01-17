@@ -229,7 +229,13 @@ const App = () => {
 }
 ```
 
+### react-virtualized 적용
 
+- 리스트 컴포넌트에서 스크롤되기 전에 보이지 않는 컴포넌트는 렌더링하지 않고 크기만 차지하게끔 할 수 있음
+- List 컴포넌트 사용
+
+- 결과
+- ![image](https://user-images.githubusercontent.com/33744302/72586051-ab672380-3933-11ea-96ba-bef29b133ec1.png)
 
 
 
