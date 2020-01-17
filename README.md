@@ -193,6 +193,42 @@ onSubmit 이벤트는 onClick과 다르게 인풋에서 enter를 눌렀을 때�
 - after
 - ![image](https://user-images.githubusercontent.com/33744302/72527116-60093280-38ab-11ea-9006-c7d3499224e6.png)
 
+### useReducer 사용하기
+
+```react
+//상태를 업데이트 하는 로직 분리
+//업데이트를 위해 필요한 정보를 담은 action값을 전달받음
+function todoReducer(todos, action) {
+  switch (action.type) {
+    case 'INSERT':
+      return todos.concat(action.todo);
+    case 'REMOVE':
+      return todos.filter(todo => todo.id !== action.id);
+    case 'TOGGLE':
+      return todos.map(todo =>
+        todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
+      );
+    default:
+      return todos;
+  }
+}
+const App = () => {
+  const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos); 
+  //맨 처음 랜더링때만 createBulkTodos 호출
+  //dispatch는 액션을 발생시키는 함수, 파라미터로 action을 넣어주면 reducer함수 호출
+  const nextId = useRef(251);
+  const addTodo = useCallback(text => {
+    const todo = {
+      id: nextId.current,
+      text,
+      checked: false,
+    };
+    dispatch({ type: 'INSERT', todo });
+    nextId.current += 1;
+  }, []);
+}
+```
+
 
 
 
